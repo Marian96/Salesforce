@@ -1,0 +1,89 @@
+﻿<EntityForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:dummy="0" flexi="0" fleximode="1" fullscreen="0" resize="0" version="2">
+  <IsContactForm>false</IsContactForm>
+  <EntityName>sf_account</EntityName>
+  <CamelCase>sf_account</CamelCase>
+  <WorkflowLoad>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;Workflow e="true" isvalid="true" syntaxVersion="11" version="0"&gt;&lt;branch e="true"&gt;&lt;if e="true"&gt;&lt;conditions e="true" op="And"&gt;&lt;condition e="false"&gt;&lt;var&gt;Entity.ownerid2&lt;/var&gt;&lt;op&gt;DoesNotContainData&lt;/op&gt;&lt;/condition&gt;&lt;condition e="false"&gt;&lt;var&gt;Entity.createdon&lt;/var&gt;&lt;op&gt;DoesNotContainData&lt;/op&gt;&lt;/condition&gt;&lt;/conditions&gt;&lt;action e="true"&gt;&lt;function e="true"&gt;&lt;var&gt;Entity.ownerid2&lt;/var&gt;&lt;arg&gt;var:Configuration.systemuserid&lt;/arg&gt;&lt;func&gt;Assign&lt;/func&gt;&lt;/function&gt;&lt;/action&gt;&lt;/if&gt;&lt;/branch&gt;&lt;/Workflow&gt;</WorkflowLoad>
+  <WorkflowItemChanged>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;Workflow e="true" isvalid="true" syntaxVersion="7" version="0"&gt;&lt;branch e="true"&gt;&lt;if e="true"&gt;&lt;conditions e="true" op="And"&gt;&lt;condition e="true"&gt;&lt;var&gt;Entity.billinglatitude&lt;/var&gt;&lt;op&gt;ContainsData&lt;/op&gt;&lt;/condition&gt;&lt;condition e="true"&gt;&lt;var&gt;Entity.billinglongitude&lt;/var&gt;&lt;op&gt;ContainsData&lt;/op&gt;&lt;/condition&gt;&lt;/conditions&gt;&lt;action e="true"&gt;&lt;function e="false"&gt;&lt;var&gt;Tabs.Map.IsVisible&lt;/var&gt;&lt;arg&gt;Boolean:True&lt;/arg&gt;&lt;func&gt;Assign&lt;/func&gt;&lt;/function&gt;&lt;/action&gt;&lt;/if&gt;&lt;if e="true"&gt;&lt;conditions e="true" op="And" /&gt;&lt;action e="true"&gt;&lt;function e="false"&gt;&lt;var&gt;Tabs.Map.IsVisible&lt;/var&gt;&lt;arg&gt;Boolean:True&lt;/arg&gt;&lt;func&gt;Assign&lt;/func&gt;&lt;/function&gt;&lt;/action&gt;&lt;/if&gt;&lt;/branch&gt;&lt;/Workflow&gt;</WorkflowItemChanged>
+  <SharedVariables>&lt;SharedVariables&gt;&lt;Variables /&gt;&lt;/SharedVariables&gt;</SharedVariables>
+  <PrimaryCommands>Delete|||Favorite||</PrimaryCommands>
+  <SharedVariableNames/>
+  <ClassBinding/>
+  <EnabledWorkflows>OnLoadEnabled OnSaveEnabled OnExecuteCommand OnCanExecuteCommand</EnabledWorkflows>
+  <SerializedChildrenV2>
+    <FormTab xsi:type="DetailTab">
+      <Name>sf_account</Name>
+      <SerializedChildren>
+        <DetailItem SchemaName="name"/>
+        <DetailItem SchemaName="phone"/>
+        <DetailItem SchemaName="website"/>
+        <DetailItem SchemaName="parentid">
+          <LookupViews>&lt;lookup&gt;&lt;extra /&gt;&lt;extra&gt;&lt;views&gt;sf_account.@Lookup - All Accounts&lt;/views&gt;&lt;/extra&gt;&lt;/lookup&gt;</LookupViews>
+        </DetailItem>
+        <DetailItem SchemaName="type"/>
+        <DetailItem SchemaName="industry"/>
+        <DetailItem SchemaName="description"/>
+      </SerializedChildren>
+    </FormTab>
+    <FormTab xsi:type="DetailTab">
+      <Name>Address</Name>
+      <AutoGridWidth>300</AutoGridWidth>
+      <AutoGridColumns>2</AutoGridColumns>
+      <SerializedChildren>
+        <DetailItem SchemaName="billingstreet" Style="Normal"/>
+        <DetailItem SchemaName="billingcity"/>
+        <DetailItem SchemaName="billingstate"/>
+        <DetailItem SchemaName="billingpostalcode"/>
+        <DetailItem SchemaName="billingcountry"/>
+        <DetailItem SchemaName="billinglatitude"/>
+        <DetailItem SchemaName="billinglongitude"/>
+      </SerializedChildren>
+    </FormTab>
+    <FormTab xsi:type="MapTab" flexiHeight="1">
+      <Name>Map</Name>
+      <CoordinatesBinding>billinglatitude;billinglongitude</CoordinatesBinding>
+    </FormTab>
+    <FormTab xsi:type="DetailTab">
+      <Name>ShippingAddress</Name>
+      <SerializedChildren>
+        <DetailItem SchemaName="shippingstreet"/>
+        <DetailItem SchemaName="shippingcity"/>
+        <DetailItem SchemaName="shippingstate"/>
+        <DetailItem SchemaName="shippingpostalcode"/>
+        <DetailItem SchemaName="shippingcountry"/>
+        <DetailItem SchemaName="shippinglatitude"/>
+        <DetailItem SchemaName="shippinglongitude"/>
+      </SerializedChildren>
+    </FormTab>
+    <FormTab xsi:type="AssociatedTab" FlipMode="224" AllowAddExisting="true">
+      <Name>Contacts List</Name>
+      <Binding SchemaName="sf_contact.accountid"/>
+      <Views>sf_contact.@All Contacts:sf_contact.My Contacts</Views>
+    </FormTab>
+    <FormTab xsi:type="AssociatedTab">
+      <Name>Opportunities List</Name>
+      <Binding SchemaName="sf_opportunity.accountid"/>
+      <Views>sf_opportunity.@Lookup - All Opportunities:sf_opportunity.My Open Opportunities</Views>
+    </FormTab>
+    <FormTab xsi:type="AssociatedTab">
+      <Name>Events List</Name>
+      <Binding SchemaName="sf_event.whatid"/>
+    </FormTab>
+    <FormTab xsi:type="AssociatedTab">
+      <Name>Tasks List</Name>
+      <Binding SchemaName="sf_task.whatid"/>
+    </FormTab>
+    <FormTab xsi:type="AssociatedTab" FlipMode="224" AllowAddExisting="true">
+      <Name>Files</Name>
+      <CustomName>Files</CustomName>
+      <Binding SchemaName="sf_contentdocumentlink.linkedentityid"/>
+    </FormTab>
+    <FormTab xsi:type="AssociatedTab">
+      <Name>Attachments List</Name>
+      <Binding SchemaName="sf_attachment.parentid"/>
+    </FormTab>
+    <FormTab xsi:type="AssociatedTab">
+      <Name>Notes List</Name>
+      <Binding SchemaName="sf_note.parentid"/>
+    </FormTab>
+  </SerializedChildrenV2>
+</EntityForm>
